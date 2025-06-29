@@ -59,7 +59,6 @@ module.exports.getAutoCompleteSuggestions = async (input) => {
 
     const apiKey = process.env.GOOGLE_MAPS_API;
     const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(input)}&key=${apiKey}`;
-
     try {
         const response = await axios.get(url);
         if (response.data.status === 'OK') {
@@ -76,8 +75,6 @@ module.exports.getAutoCompleteSuggestions = async (input) => {
 module.exports.getCaptainsInTheRadius = async (ltd, lng, radius) => {
 
     // radius in km
-
-
     const captains = await captainModel.find({
         location: {
             $geoWithin: {
@@ -85,7 +82,6 @@ module.exports.getCaptainsInTheRadius = async (ltd, lng, radius) => {
             }
         }
     });
-
     return captains;
 
 
